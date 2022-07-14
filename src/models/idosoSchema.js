@@ -14,12 +14,17 @@ const idosoSchema = new mongoose.Schema({
     type: Date,
     required: true
   },
+  cpf: {
+    type: String,
+    required: true,
+    unique: true
+  },
   genero: {
     type: String
   },
 
   situacao: String,
-  
+
 },{timestamps: true})
 
 const Idoso = mongoose.model("idoso", idosoSchema);
