@@ -14,6 +14,10 @@ const voluntarioSchema = new mongoose.Schema({
     type: Date,
     required: true
   },
+  cpf: {
+    type: String,
+    required: true
+  },
   estadoCivil: String,
   genero: String,
   ajudaOferecida: {
