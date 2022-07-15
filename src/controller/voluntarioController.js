@@ -35,6 +35,95 @@ const cadastrarVoluntario = async (req, res) => {
   }
 } 
 
+const listarVoluntarios = async (req, res) => {
+  try {
+    const voluntario = await Voluntario.find().populate("idoso");
+    res.status(200).json({
+      message: "Lista de Voluntários",
+      voluntario
+    })
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    })
+  }
+}
+
+const listarVoluntariosPorId = async (req, res) => {
+  try {
+    const voluntario = await Voluntario.findById(req.params.id).populate("idoso")
+
+    if(!voluntario) {
+      return res.status(404).json({message: "Cadastro não encontrado."})
+    }
+
+    res.status(200).json({
+      message: "Voluntário:",
+      voluntario
+    })
+
+  } catch (error) {
+    res.status(500).json({
+    message: error.message
+  })
+}
+}
+
+const atualizarVoluntarioPorId = async (req, res) => {
+  try {
+    const { nome, endereco, cpf, ajudaOferecida, idoso } = req.body;
+
+    const voluntario = await Voluntario.findById(req.params.id).populate("idoso");
+
+    if(!voluntario) {
+      return res.status(404).json({message: "Cadastro não encontrado."})
+    }
+
+    voluntario.nome = nome || voluntario.nome
+    voluntario.endereco = endereco || voluntario.endereco
+    voluntario.cpf = cpf || voluntario.cpf
+    voluntario.ajudaOferecida = ajudaOferecida || voluntario.ajudaOferecida
+    voluntario.idoso = idoso || voluntario.idoso
+
+    const atualizarVoluntario = await voluntario.save();
+
+    res.status(200).json({
+      message: "Cadastro atualizado com sucesso!",
+      atualizarVoluntario
+    })
+
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    })
+  }
+}
+
+const deletarVoluntarioPorId = async (req, res) => {
+  try {
+    const voluntario = await Voluntario.findById(req.params.id).populate("idoso")
+
+    if(!voluntario){
+      return res.status(404).json({message: "Cadastro não encontrado."})
+    }
+
+   const deletarVoluntario = await voluntario.delete();
+    res.status(200).json({
+      message: "Cadastro deletado com sucesso.",
+    deletarVoluntario
+  })
+
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    })
+  }
+}
+
 module.exports = {
-  cadastrarVoluntario
+  cadastrarVoluntario,
+  listarVoluntarios,
+  listarVoluntariosPorId,
+  atualizarVoluntarioPorId,
+  deletarVoluntarioPorId
 }
