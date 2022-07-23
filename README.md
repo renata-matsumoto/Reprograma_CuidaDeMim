@@ -14,21 +14,21 @@ Projeto Final Todas Em Tech - Back-End / 2022
 
 <br>
 
- API desenvolvida como Projeto Final com o auxílio da professora Paula Allemand para a conclusão do curso de Backend  [{Reprograma}](https://reprograma.com.br/)
+ API desenvolvida como Projeto Final com a ajuda sagrada da Professora Hannah Freitas para a conclusão do curso de Backend  [{Reprograma}](https://reprograma.com.br/)
 
-<p align="justify">Este projeto nasceu da minha vontade imensa de ajudar as pessoas. Nessa pandemia, observei que os pedidos de ajuda por meio das redes sociais, aumentaram em demasiado. Como já tinha a ideia de construir um projeto que me abrisse oportunidades para construir uma ONG no futuro, então aproveitei esse momento.
+<p align="justify">
 
-<p align="justify">Apesar do aumento da desigualdade e do desemprego, há pessoas que também se disponibilizam a ajudar, então o objetivo principal da construção dessa API, é a conexão dessas pessoas que precisam de ajuda, com as pessoas que têm a possibilidade de ajudar. Por meio de doações de cestas básicas, ou até mesmo, transferência bancária via pix. Sempre com a preocupação de proteção dos dados de todos os envolvidos.
+<p align="justify">
 
-<p align="justify">Com o pensamento no futuro de se tornar um projeto grande e viável para a criação de um espaço seguro, que essas pessoas em situação de vulnerabilidade social possam ter oportunidades melhores, de ajuda de todas os tipos, e não só de doações, mas com uma possibilidade de contratações, como implementação futura.
+<p align="justify">
 
 <br><br>
 
-## 🚀 Descrição da API Cestas Solidárias
+## 🚀 Descrição da API Cuida de Mim
 
 <br>
 
-<p align="justify">O projeto é uma API REST que permite que pessoas em situação de vulnerabilidade social, consigam se cadastrar, informando seus dados e descrevendo informações sobre a sua situação atual, de forma objetiva, para que haja a conexões com pessoas ou projetos sociais, que estejam procurando formas de ajudar, contendo assim dois cadastros, um para os beneficiários, e outro para os doadores que querem fazer uma busca de quem necessita ser beneficiado, tendo assim uma opção de login para estas que buscam ajudar, conseguindo acesso as informações de quem está cadastrado no sistema.
+<p align="justify">
 
 <p align="justify">A interface é um CRUD completo integrado com o banco de dados, onde é possível listar os usuários, tanto que precisam de auxílio e quem pode dar este auxílio, cadastrar novos usuários, atualizar os dados e deletar o cadastro do usuário. Tudo isso passando por uma autenticação, gerando um token que permite ou não o acesso as pessoas que estarão no sistema.
 
@@ -38,7 +38,7 @@ Projeto Final Todas Em Tech - Back-End / 2022
 
 ## 🔗 Link 
 
-- [Apresentação](https://www.canva.com/design/DAEyebqnxvA/BxubKrzukG0eT9OnR9-2uQ/view?utm_content=DAEyebqnxvA&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
+- [Apresentação](https://docs.google.com/presentation/d/19Zv5lzDjhMUuljqReGV6RGPl6iueDuJWIs_zAJB6mn8/edit?usp=sharing)
 
 <br>
 
@@ -67,7 +67,6 @@ Para a construção do projeto, as seguintes tecnologias foram utilizadas:
 - [Git/Github](https://github.com/)
 - [Node.js](https://nodejs.org/en/)
 - [MongoDb](https://www.mongodb.com/)
-- [MongoCompass](https://www.mongodb.com/pt-br/products/compass)
 - [MongoDBatlas](https://www.mongodb.com/cloud/atlas)
 - [Postman](https://www.postman.com/)
 - [Vscode](https://code.visualstudio.com/)
@@ -89,55 +88,46 @@ Para a construção do projeto, as seguintes tecnologias foram utilizadas:
 ## 📁 Arquitetura MVC 
 
 ```
- 📁 cestas-solidarias
-   |
-   |-  📁 src
-   |    |
-   |    |- 📁 controller
-   |         |- 📑 cestasSolidariasController.js
-   |         |- 📑 loginUsuarioController.js
-   |     
-   |
-   |    |- 📁 database
-   |         |- 📑 mongoConfig.js
-   |
-   |    |- 📁 helpers
-   |         |- 📑 authCestasSolidarias.js
-   |
-   |    |- 📁 middlewares
-   |         |- 📑 authCestasSolidarias.js
-   |
-   |    |- 📁 models
-   |         |- 📑 cestasSolidariasSchema.js
-   |         |- 📑 loginUsuarioSchema.js
-   |         
-   |
-   |    |- 📁 routes
-   |         |- 📑 cestasSolidariasRoutes.js 
-   |         |- 📑 indexRoutes.js
-   |         |- 📑 loginUsuarioRoutes.js
-   |
-   |    |- 📑 app.js
-   |    |- 📑 swagger.json
-   |
-   |
-   |- 📑 .env
-   |- 📑 .env.example
-   |- 📑 .gitignore
-   |- 📑 package-lock.json
-   |- 📑 package.json
-   |- 📑 README.md
-   |- 📑 server.js
+ 📁 cuida-de-mim   
+   📦src
+ ┣ 📂controller
+ ┃ ┣ 📜authIdosoController.js
+ ┃ ┣ 📜authVoluntarioController.js
+ ┃ ┣ 📜idosoController.js
+ ┃ ┗ 📜voluntarioController.js
+ ┣ 📂database
+ ┃ ┗ 📜mongoConfig.js
+ ┣ 📂helpers
+ ┃ ┗ 📜hashPassword.js
+ ┣ 📂middlewares
+ ┃ ┗ 📜autenticacaoUsuario.js
+ ┣ 📂models
+ ┃ ┣ 📜idosoSchema.js
+ ┃ ┗ 📜voluntarioSchema.js
+ ┣ 📂routes
+ ┃ ┣ 📜idosoRoutes.js
+ ┃ ┣ 📜indexRoutes.js
+ ┃ ┗ 📜voluntarioRoutes.js
+ ┗ 📜app.js
+ ┣ 📜.env
+ ┣ 📜.env.example
+ ┣ 📜.gitignore
+ ┣ 📜ibge.png
+ ┣ 📜package-lock.json
+ ┣ 📜package.json
+ ┣ 📜Procfile
+ ┣ 📜README.md
+ ┗ 📜server.js
 ```
 <br>
 
 ## 🔃 Rotas
 
-* local: http://localhost:9095
+* local: http://localhost:9090
 
-* Heroku: https://cestas-solidarias.herokuapp.com/
+* Heroku: https://cuidademim.herokuapp.com/
 
-    * Utilize o [Postman](https://www.postman.com/) ou [Insomnia](https://insomnia.rest/download/) para para chamar e testar os endpoints da API localmente ou via Heroku
+    * Utilize o [Postman](https://www.postman.com/) para para chamar e testar os endpoints da API localmente ou via Heroku
 
 <br>
 
