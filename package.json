@@ -1,7 +1,7 @@
 {
   "name": "projeto",
   "version": "1.0.0",
-  "description": "",
+  "description": "Projeto Reprograma Cuida de Mim",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
     "dev": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Renata Matsumoto",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",

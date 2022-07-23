@@ -23,6 +23,11 @@ const idosoSchema = new mongoose.Schema({
     type: String
   },
 
+  password: {
+    type: String,
+    required: true
+  },
+
   situacao: String,
 
 },{timestamps: true})

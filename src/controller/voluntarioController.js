@@ -1,18 +1,29 @@
 const Voluntario = require("../models/voluntarioSchema")
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
+
+const SECRET = process.env.SECRET
+
 
 const cadastrarVoluntario = async (req, res) => {
+  const hashPassword = bcrypt.hashSync(req.body.password, 10);
+  req.body.password = hashPassword;
+
   try {
-    const { nome, endereco, dataNascimento, cpf, estadoCivil, genero, ajudaOferecida, idoso } = req.body;
+    const { nome, email, endereco, dataNascimento, cpf, estadoCivil, genero, ajudaOferecida, idoso, password } = req.body;
 
     const novoVoluntario = new Voluntario({
       nome,
+      email,
       endereco, 
       dataNascimento,
       cpf,
       estadoCivil,
       genero,
       ajudaOferecida,
-      idoso
+      idoso,
+      password
+
   })
 
     const voluntarioExiste = await Voluntario.findOne({cpf: req.body.cpf})
@@ -71,7 +82,7 @@ const listarVoluntariosPorId = async (req, res) => {
 
 const atualizarVoluntarioPorId = async (req, res) => {
   try {
-    const { nome, endereco, cpf, ajudaOferecida, idoso } = req.body;
+    const { nome, endereco, cpf, ajudaOferecida, idoso, password } = req.body;
 
     const voluntario = await Voluntario.findById(req.params.id).populate("idoso");
 
@@ -84,6 +95,7 @@ const atualizarVoluntarioPorId = async (req, res) => {
     voluntario.cpf = cpf || voluntario.cpf
     voluntario.ajudaOferecida = ajudaOferecida || voluntario.ajudaOferecida
     voluntario.idoso = idoso || voluntario.idoso
+    voluntario.password = password || voluntario.password
 
     const atualizarVoluntario = await voluntario.save();
 

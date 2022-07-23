@@ -1,10 +1,14 @@
 const Idoso = require("../models/idosoSchema");
+const bcrypt = require('bcrypt');
+const { hashPassword } = require('../helpers/hashPassword')
 
 //CRUD
 
 const cadastrarIdoso = async (req, res) => {
+  const hashPassword = bcrypt.hashSync(req.body.password, 10);
+  req.body.password = hashPassword;
   try {
-    const { nome, endereco, dataNascimento, cpf, genero, situacao } = req.body;
+    const { nome, endereco, dataNascimento, cpf, genero, situacao, password } = req.body;
 
     const novoIdoso = new Idoso({
       nome,
@@ -13,6 +17,8 @@ const cadastrarIdoso = async (req, res) => {
       cpf,
       genero,
       situacao,
+      password
+
     });
 
     const idosoExiste = await Idoso.findOne({ cpf: req.body.cpf });
@@ -78,7 +84,7 @@ const listarIdosoPorId = async (req, res) => {
 
 const atualizarIdosoPorId = async (req, res) =>{
   try {
-    const { nome, endereco, dataNascimento, cpf, genero, situacao } = req.body;
+    const { nome, endereco, dataNascimento, cpf, genero, situacao, password } = req.body;
     const idoso = await Idoso.findById(req.params.id);
 
     if(!idoso) {
@@ -91,6 +97,7 @@ const atualizarIdosoPorId = async (req, res) =>{
     idoso.endereco = endereco || idoso.endereco
     idoso.cpq = cpf || idoso.cpf
     idoso.situacao = situacao || idoso.situacao
+    idoso.password = password || idoso.password
 
 
     const atualizarIdoso = await idoso.save();

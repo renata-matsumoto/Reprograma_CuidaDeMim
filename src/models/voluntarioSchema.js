@@ -6,10 +6,16 @@ const voluntarioSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  email:{
+    type: String,
+    required: true,
+  },
+
   endereco: {
     type: String,
     required: true
   },
+
   dataNascimento: {
     type: Date,
     required: true
@@ -20,6 +26,7 @@ const voluntarioSchema = new mongoose.Schema({
   },
   estadoCivil: String,
   genero: String,
+
   ajudaOferecida: {
     type: String
   },
@@ -28,6 +35,11 @@ const voluntarioSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: "idoso"
+  },
+
+  password:{
+    type: String,
+    required: true
   }
 
 }, {timestamps: true})
