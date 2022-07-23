@@ -33,7 +33,6 @@ const voluntarioSchema = new mongoose.Schema({
 
   idoso: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
     ref: "idoso"
   },
 

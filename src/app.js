@@ -17,9 +17,5 @@ app.use("/idoso", idosoRotas)
 app.use("/voluntario", voluntarioRotas )
 // app.use("/usuario", usuarioRotas)
 app.use("/", index);
-app.get("/terms", (req, res) => {
-  return res.json({
-      message: "Termos de Serviço"
-  })
-})
+
 module.exports = app;
