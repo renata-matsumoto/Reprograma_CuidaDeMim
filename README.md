@@ -150,7 +150,7 @@ Para a construção do projeto, as seguintes tecnologias foram utilizadas:
     - dotenv-safe
     - bcrypt
     - jwt
-    - swwage
+    - swagger
     
 <p align="justify">Verifique se todas as dependências do package.json foram instaladas 
     
