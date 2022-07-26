@@ -46,7 +46,7 @@ Projeto Final Todas Em Tech - Back-End / 2022
 - [Apresentação](https://docs.google.com/presentation/d/19Zv5lzDjhMUuljqReGV6RGPl6iueDuJWIs_zAJB6mn8/edit?usp=sharing)
 
 <br>
-
+    
 ## ⚙️ Funcionalidades/Objetivos
 
 - Listar todas as pessoas que estão cadastradas no sistema;
@@ -127,7 +127,35 @@ Para a construção do projeto, as seguintes tecnologias foram utilizadas:
  ┗ 📜server.js
 ```
 <br>
+    
+## 🚧 Instruções para utilização da API
 
+<br>
+<p align="justify">Você vai precisar ter instalado em sua máquina as seguintes ferramentas: 
+
+*  Git,
+*  Node.js
+*  Uma IDE, eu usei o VScode.
+
+## ⚙️ Rodando o Back-End
+
+* Clone este repositório
+* Acesse a pasta no projeto pelo terminal
+* Instale as dependencias
+    - npm install
+    - mongoose
+    - cors
+    - express
+    - nodemon
+    - dotenv-safe
+    - bcrypt
+    - jwt
+    - swwage
+    
+<p align="justify">Verifique se todas as dependências do package.json foram instaladas 
+    
+*  Execute o servidor: npm start
+<br>
 ## 🔃 Rotas
 
 * local: http://localhost:9090
@@ -176,19 +204,16 @@ Swagger - Heroku:
 
 
 
-## ✅ Dados para Collection Cestas Solidarias:
+## ✅ Dados para Collection Idoso:
 
 - id: gerado automaticamente 
-- nome: texto e obrigatório
-- sobrenome: texto e obrigatório
-- email: texto e obrigatório 
-- celular: número e obrigatório
-- whatsapp: booleano e obrigatório
-- cpf: número e obrigatório 
-- bairro: texto e obrigatório 
-- pix: texto e obrigatório 
-- termosDeUso: texto e obrigatório
-- informacao: texto e obrigatório  
+- nome: texto e obrigatório 
+- endereco: texto e obrigatório
+- dataNscimento: date e obrigatório 
+- cpf: número, obrigatório e único
+- genero: texto e obrigatório 
+- password: texto e obrigatório
+- situacao: texto  
 - criadoEm: data gerada automaticamente e obrigatório
 
 <br>
@@ -197,28 +222,34 @@ Swagger - Heroku:
 
 ```jsx
 {
-    "_id": "61b780fa0fd8f51ac598b64b",
-    "name": "Henrique",
-    "nickname": "Neves",
-    "whatsapp": true,
-    "bairro": "cordeiro",
-    "termosDeUso": true,
-    "informacao": "Três filhos, desempregado, sem alimentos em casa, necessitando urgente de ajuda com cestas básicas ou qualquer tipo de doação",
-    "criadoEm": "2021-12-13T17:19:43.701Z",
-    "__v": 0
+     "_id": "62cf7c1dc957931b09c70e98",
+            "nome": "Joaquim Gusmao",
+            "endereco": "Rua Maria Estela, 125",
+            "dataNascimento": "1948-10-25T03:00:00.000Z",
+            "cpf": "258.784.589-58",
+            "genero": "Masculino",
+            "situacao": "Está morando em uma casa de repouso e a família não o visita mais. Precisa de um amigo para conversar",
+            "createdAt": "2022-07-14T02:14:54.089Z",
+            "updatedAt": "2022-07-14T02:14:54.089Z",
+            "__v": 0
 }
 ```
  <br>
 
- ## ✅ Dados para Collection Login:
+ ## ✅ Dados para Collection Voluntário:
 
 - id: gerado automaticamente 
 - nome: texto e obrigatório
-- sobrenome: texto e obrigatório
-- cpf: número e obrigatório
 - email: texto e obrigatório
+- endereco: texto e obrigatório
+- dataNascimento: date e obrigatório
+- cpf: número e obrigatório
+- estadoCivil: texto
+- genero: texto
+- ajudaOferecida: texto
+- idoso: id: gerado automaticamente, ref: idoso
 - password: texto e obrigatório
-- termosDeUso: texto e obrigatório
+- criadoEm: data gerada automaticamente e obrigatório
 
 
 <br>
@@ -227,35 +258,31 @@ Swagger - Heroku:
 
 ```jsx
 {
-    "messagem": "Pessoa cadastrada com sucesso",
-    "saveUser": {
-        "name": "Vitória",
-        "nickname": "Leite",
-        "cpf": 33355566788,
-        "email": "vicsleite@gmail.com",
-        "password": "$2b$10$n9jsDR1jjcN3Gpk8.EDXDeTOHwKCedTERQQyWh38jgCoZlwixFbq6",
-        "termosDeUso": "false",
-        "_id": "61b7a3a8a02e42b50f53a427",
-        "createdAt": "2021-12-13T19:48:56.683Z",
-        "updatedAt": "2021-12-13T19:48:56.683Z",
-        "__v": 0
-    }
+"_id": "62cf8bea77b3bc7d50b103cd",
+            "nome": "Luciana Guimaraes",
+            "endereco": "Rua Paes de Barros, 25 apto 22",
+            "dataNascimento": "1998-12-15T02:00:00.000Z",
+            "cpf": "258.478.784-87",
+            "estadoCivil": "Casada",
+            "genero": "feminino",
+            "ajudaOferecida": "Tem disponibilidade de passar as tarde dando aula de  artesanato",
+            "idoso": {
+                "_id": "62cf7c1dc957931b09c70e98",
+                "nome": "Joaquim Gusmao",
+                "endereco": "Rua Maria Estela, 125",
+                "dataNascimento": "1948-10-25T03:00:00.000Z",
+                "cpf": "258.784.589-58",
+                "genero": "Masculino",
+                "situacao": "Está morando em uma casa de repouso e a família não o visita mais. Precisa de um amigo para conversar",
+                "createdAt": "2022-07-14T02:14:54.089Z",
+                "updatedAt": "2022-07-14T02:14:54.089Z",
+                "__v": 0
+            },
+            "createdAt": "2022-07-14T03:22:19.807Z",
+            "updatedAt": "2022-07-14T03:22:19.807Z",
+            "__v": 0
 }
 ```
-
-<br>
-
-
-## 🚧 Melhorias para o futuro (Em construção)
-
-<br>
-
-*  Implantação de código Front-end, com ReactJs ou AngularJs. Para o usuário ter a interação na tela.
-* Acrescentar no banco de dados, uma requisição que grava o ID de quem está logado, para segurança de quem está cadastrado.
-
-
-
-Estou aberta a opiniões, caso queiram contribuir com meu projeto.
 
 <br>
 
@@ -264,11 +291,11 @@ Estou aberta a opiniões, caso queiram contribuir com meu projeto.
 <br>
 
 <td align="center"><a href="https://github.com/HannahFreitas">
-<img style="border-radius: 20%;" src="https://avatars.githubusercontent.com/u/80156310?v=4" width="200px;" alt=""/> </td><br> 
+<img style="border-radius: 20%;" src="https://avatars.githubusercontent.com/u/83011638?s=400&u=3bdf6c0c7eb5569487397b8b0a54eecebb9dddfd&v=4" width="200px;" alt=""/> </td><br> 
 
 
-## [Hannah Freitas](https://github.com/HannahFreitas)
-## [LinkedIn](https://www.linkedin.com/in/hannahcfreitas/) 
+## [Renata Matsumoto](https://github.com/renata-matsumoto)
+## [LinkedIn](https://www.linkedin.com/in/renata-matsumoto/) 
 
 <br>
 
