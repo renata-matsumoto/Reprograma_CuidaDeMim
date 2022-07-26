@@ -5,7 +5,7 @@ Projeto Final Todas Em Tech - Back-End / 2022
     <br>
     <p align="center">Projeto Final {Reprograma}<p>
     <p align="center">
-    <img src="./imagens/idosos.png" width="350" height="300"/>
+    <img src="imagens\idosos.jpg" width="350" height="300"/>
     </p>
     <p align="center">Cuida de Mim<p>
     <p align="center">"Adoção" de idosos em lares de acolhimento<p>
