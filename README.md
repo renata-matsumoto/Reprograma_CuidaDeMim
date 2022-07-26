@@ -1,26 +1,33 @@
-# Reprograma_CuidaDeMim
+
 Projeto Final Todas Em Tech - Back-End / 2022
 
 <h1 align="center">
     <br>
     <p align="center">Projeto Final {Reprograma}<p>
+    <p align="center">
+    <img src="./imagens/idosos.png" width="350" height="300"/>
+    </p>
+    <p align="center">Cuida de Mim<p>
+    <p align="center">"Adoção" de idosos em lares de acolhimento<p>
 </h1>
-<p align="center">
-<img src="./assets/cestas-solidarias.gif" width="350" height="300"/>
-</p>
+
 <br>
 
 ## 💻 Sobre o projeto 
 
 <br>
 
- API desenvolvida como Projeto Final com a ajuda sagrada da Professora Hannah Freitas para a conclusão do curso de Backend  [{Reprograma}](https://reprograma.com.br/)
+ API desenvolvida como Projeto Final com a ajuda sagrada da Professora Hannah Freitas para a conclusão do curso de Backend [{Reprograma}](https://reprograma.com.br/)
 
-<p align="justify">
+<p align="justify">Desde de pequena sempre fui ensinada a ver os outros não só com os olhos do rosto mas também com os olhos do coração. E assim comecei a observar que as pessoas tem diferentes necessidades e algumas nós podemos ajudar. É só dar um passo.
+    
+<p align="justify">O Brasil é um país em processo de envelhecimento . Nosso maior contingente ainda é de jovens, mas conforme projeções do IBGE, em 2030 isso começará a mudar - o número de pessoas com mais de 60 anos será maior do que a da população com até 14 anos.
 
-<p align="justify">
+<p align="justify">Aqui a velhice é sinal de decadência e incapacidade e as pessoas com mais idade sofrem preconceitos e são desrespeitadas diariamente. Muitos sofrem violência e maus tratos da própria família.
+   
+<p align="justify">Ocorre que a população brasileira está envelhecendo muito depressa e isso tem um custo e o país não está preparado, não temos políticas públicas adequadas para essa população específica. Portanto, envelhecer no Brasil torna-se um desafio.
 
-<p align="justify">
+<p align="justify">Esse projeto nasceu justamente para poder ajudar pessoas idosas que estão em situação de vulnerabilidade, precisando dessa ajuda e facilitar o acesso das pessoas "voluntárias" que estão dispostas a ajudar e não sabem como, fazendo essa ponte entre eles. 
 
 <br><br>
 
@@ -28,11 +35,9 @@ Projeto Final Todas Em Tech - Back-End / 2022
 
 <br>
 
-<p align="justify">
+<p align="justify">O Projeto é uma API Rest que permite que os idosos em situação de vulnerabilidade, possam ser cadastrados, informando os seus dados e suas necessidades para que as pessoas "voluntárias" que estejam dispostas a ajudar possam fazer uma busca. Os "voluntários" também irão se cadastrar, informando os seus dados e como pretendem ajudar. Ambos terão login e senha.
 
-<p align="justify">A interface é um CRUD completo integrado com o banco de dados, onde é possível listar os usuários, tanto que precisam de auxílio e quem pode dar este auxílio, cadastrar novos usuários, atualizar os dados e deletar o cadastro do usuário. Tudo isso passando por uma autenticação, gerando um token que permite ou não o acesso as pessoas que estarão no sistema.
-
-
+<p align="justify">A interface é um CRUD completo integrado com o banco de dados, onde é possível listar os idosos e os "voluntários", cadastrar novos idosos e/ou "voluntários", atualizar os dados e deletar o cadastro do idoso e/ou "voluntário". Tudo isso passando por uma autenticação, gerando um token que permite ou não o acesso as pessoas que estarão no sistema.
   
 <br>
 
@@ -45,10 +50,11 @@ Projeto Final Todas Em Tech - Back-End / 2022
 ## ⚙️ Funcionalidades/Objetivos
 
 - Listar todas as pessoas que estão cadastradas no sistema;
-- Conseguir puxar os dados das pessoas por uma rota privada;
-- Cadastrar pessoas que estejam em caso de vulnerabilidade social e pessoas que possam oferecer um auxílio;
-- Atualizar os dados dessa pessoa, caso haja mudança de bairro, pix, email, celular;
-- Deletar essa pessoa caso não seja mais necessário este suporte a mesma ou a pessoas cadastrada não consiga mais ajudar;
+- Cadastrar os idosos que estão em situação de vulnerabilidade;
+- Cadastrar os voluntários “adotantes” que possam oferecer ajuda;
+- Atualizar os dados tanto do idoso quanto do "voluntário", caso haja alguma mudança;
+- Deletar o idoso e/ou voluntário, caso não seja mais necessário;
+- Efetuar login por CPF e senha;
 <br>
 
 ## 📚 Aprendizados
@@ -82,6 +88,7 @@ Para a construção do projeto, as seguintes tecnologias foram utilizadas:
 - [JWT](https://www.npmjs.com/package/jsonwebtoken)
 - [Bcrypt](https://www.npmjs.com/package/bcrypt)
 - [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
+- [swagger-autogen](https://www.npmjs.com/package/swagger-autogen)
 
 <br>
 
@@ -137,40 +144,33 @@ Swagger - Heroku:
 
 | Método HTTP  | Endpoint                            | Descrição                            |
 | ------------ | ----------------------------------- | ------------------------------------ |
-| GET          | `http://localhost:9095/api-docs`    |  documentação  swagger               |        
+| GET          | `http://localhost:9090/doc/#`       |  documentação  swagger               |        
 
 <br>
 
-## 🔃 Retorna teste com apresentação: 
-
-| Método HTTP  | Endpoint                     | Descrição                            |
-| ------------ | ---------------------------- | ------------------------------------ |
-| GET          | `http://localhost:9095/`     |  Mensagem de apresentação (Index)    |             |
-
-<br>
-
-## 🔃 Manipulação das Rotas de Usuários que serão ajudados:
+## 🔃 Manipulação das Rotas dos idosos:
 
 | Método HTTP  | Endpoint                | Descrição                            |
 | ------------ | ----------------------- | ------------------------------------ |
-| GET          | `/users`                | Retorna todos os usuários            |
-| GET          | `/users/private`        | Retorna todos os dados               |
-| POST         | `/users/create`         | Cria/cadastra um novo usuário        |
-| PUT          | `/users/update/:id`     | Altera informações de um usuário     |
-| DELETE       | `/users/delete/:id`     | Deleta um usuário específico         |
+| GET          | `/idoso/listar`         | Retorna todos os idosos              |
+| GET          | `/idoso/listar/:id`     | Retorna idoso por Id                 |
+| POST         | `/idoso/cadastrar`      | Cria/cadastra um novo idoso          |
+| POST         | `/login/loginIdoso`     | Faz o login do Idoso                 |
+| PUT          | `/idoso/atualizar/:id`  | Altera informações do idoso          |
+| DELETE       | `/idoso/deletar/:id`    | Deleta um idoso específico           |
 
 <br>
 
-## 🔃 Manipulação das Rotas das pessoas que fizeram Login:
+## 🔃 Manipulação das Rotas dos voluntários:
 
-| Método HTTP  | Endpoint              | Descrição                                  |
-| ------------ | --------------------- | ------------------------------------------ |
-| GET          | `/helpers`            | Retorna todos os usuários                  |
-| GET          | `/helpers/private`    | Retorna todos os dados sem restrição       |
-| POST         | `/helpers/register`   | Cria um novo cadastro/login                |
-| POST         | `/helpers/login `     | Faz o login                                |
-| PUT          | `/helpers/update/:id` | Altera informações de um usuário           |
-| DELETE       | `/helpers/delete/:id` | Deleta um usuário específico               |
+| Método HTTP  | Endpoint                     | Descrição                            |
+| ------------ | -----------------------------| ------------------------------------ |
+| GET          | `/voluntario/listar`         | Retorna todos os voluntários         |
+| GET          | `/voluntario/listar/:id`     | Retorna voluntário por Id            |
+| POST         | `/voluntario/cadastrar`      | Cria/cadastra um novo voluntário     |
+| POST         | `/voluntario/loginvoluntario`| Faz o login do voluntário            |
+| PUT          | `/voluntario/atualizar/:id`  | Altera informações do voluntario     |
+| DELETE       | `/voluntario/deletar/:id`    | Deleta um voluntario específico      |
 
 <br>
 
