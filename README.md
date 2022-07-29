@@ -307,6 +307,3 @@ Swagger - Heroku:
 
 <p align="justify"> Sou extremamente grata a minha família pela paciência e total compreensão pelo nervos a flor da pele !!!
 
-## 📝 Licença
-
-Este projeto esta sob a licença [MIT](./LICENSE).
